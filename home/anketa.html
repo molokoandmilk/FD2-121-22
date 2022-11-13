@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+   let userName;
+   let userLastName;
+   let userPatronymicName;
+   let userAge;
+   let userGender;
+   let userRetired;
+
+   do{
+        userName = prompt('Ведите свое имя');
+   } while (userName ==='');
+
+   do{
+       userLastName = prompt('Ведите свою фамилию');
+   } while (userLastName ==='');
+
+   do{
+       userPatronymicName = prompt('Ведите свое отчество');
+   } while (userPatronymicName ==='');
+
+   userAge = parseFloat(prompt('Ведите Ваш возраст в годах'));
+
+   if (userAge >= 65){
+       userRetired = 'да';
+   } else {
+       userRetired = 'нет';
+   }
+
+   userGender = confirm('Ваш пол-мужской?');
+
+   if (userGender){
+
+       userGender = 'мужской';
+   } else {
+       userGender = 'женский'
+   }
+   alert(`
+   ваше ФИО: ${userLastName} ${userName} ${userPatronymicName}
+   ваш возраст в годах: ${userAge}
+   ваш возраст в днях: ${userAge*365}
+   через 5 лет вам будет: ${Number(userAge)+5}
+   ваш пол: ${userGender}
+   вы на пенсии: ${userRetired}
+   `);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
