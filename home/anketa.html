@@ -16,15 +16,15 @@
 
    do{
         userName = prompt('Ведите свое имя');
-   } while (userName ==='');
+   } while (userName ==='' || userName === null);
 
    do{
        userLastName = prompt('Ведите свою фамилию');
-   } while (userLastName ==='');
+   } while (userLastName ==='' || userLastName === null);
 
    do{
        userPatronymicName = prompt('Ведите свое отчество');
-   } while (userPatronymicName ==='');
+   } while (userPatronymicName ==='' || userPatronymicName === null);
 
    userAge = parseFloat(prompt('Ведите Ваш возраст в годах'));
 
