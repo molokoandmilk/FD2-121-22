@@ -16,17 +16,20 @@
 
    do{
         userName = prompt('Ведите свое имя');
-   } while (userName ==='' || userName === null);
+   } while (userName === '' || userName === null);
 
    do{
        userLastName = prompt('Ведите свою фамилию');
-   } while (userLastName ==='' || userLastName === null);
+   } while (userLastName === '' || userLastName === null);
 
    do{
        userPatronymicName = prompt('Ведите свое отчество');
    } while (userPatronymicName ==='' || userPatronymicName === null);
 
-   userAge = parseFloat(prompt('Ведите Ваш возраст в годах'));
+   do{
+       userAge = parseInt(prompt('Ведите Ваш возраст в годах'));
+   } while ( Number.isNaN(userAge) || userAge === null);
+
 
    if (userAge >= 65){
        userRetired = 'да';
@@ -37,7 +40,6 @@
    userGender = confirm('Ваш пол-мужской?');
 
    if (userGender){
-
        userGender = 'мужской';
    } else {
        userGender = 'женский'
