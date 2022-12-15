@@ -31,18 +31,18 @@
    } while ( Number.isNaN(userAge) || userAge === null);
 
 
-   if (userAge >= 65){
-       userRetired = 'да';
-   } else {
-       userRetired = 'нет';
-   }
-
    userGender = confirm('Ваш пол-мужской?');
 
    if (userGender){
        userGender = 'мужской';
    } else {
        userGender = 'женский'
+   }
+
+   if (userGender === 'мужской' && userAge >= 65 || userGender === 'женский' && userAge >= 58){
+       userRetired = 'да';
+   } else {
+       userRetired = 'нет';
    }
    alert(`
    ваше ФИО: ${userLastName} ${userName} ${userPatronymicName}
