@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let userStr = prompt('Введите строку');
+    let newUserStr = '';
+
+    function palindrome (userStr){
+
+        userStr = userStr.toLowerCase().replace(/[^a-zа-яё]/gi, '');
+        for (let i = userStr.length-1; i >= 0; i--){
+            newUserStr += userStr[i];
+        }
+
+        if (userStr === newUserStr){
+            alert('Это палиндром');
+        }else {
+            alert('Это не палиндром');
+        }
+    }
+
+
+    palindrome(userStr);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

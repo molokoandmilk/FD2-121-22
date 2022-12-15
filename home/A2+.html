@@ -8,14 +8,20 @@
 <script>
 
 
-    let strng = prompt('введи строку')
+  let userStr = prompt('Введите строку');
 
-    function spaceDelete (string) {
-       strng = strng.replace(/(^\s*)|(\s*)$/g, '')
-    }
+  function deleteSpace(str){
+      while( str[0] === ' ') {
+          str = str.substring(1);
+      }
+      while( str[str.length-1] === ' ') {
+          str = str.substring(0, str.length - 1);
+      }
+      console.log(`!${str}!`);
+  }
 
-    spaceDelete(strng)
-    alert(`===${strng}===`)
+ deleteSpace(userStr);
+
 
 
 </script>

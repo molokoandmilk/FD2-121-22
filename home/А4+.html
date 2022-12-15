@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    let userStr = prompt('Введите строку');
+
+    function recursionPolindrome(userStr){
+
+        userStr = userStr.toLowerCase().replace(/[^a-zа-яё]/gi, '');
+        let firstLetter = userStr[0];
+        let lastLetter = userStr[userStr.length-1];
+        console.log(firstLetter,lastLetter);
+
+        if (firstLetter !== lastLetter){
+            return alert(' Это не палиндром');
+        }
+        userStr = userStr.substring(1, userStr.length-1);
+        if (userStr.length <= 1){
+            return alert(' Это палиндром');
+        }else{
+            return recursionPolindrome(userStr);
+        }
+    }
+
+
+    recursionPolindrome(userStr);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  let userStr = prompt('Введите строку');
+
+  function russiaVowels(userStr){
+
+      let stringArray =  userStr.toLowerCase().split('');
+      let result = 0;
+
+      for (let i = 0; i <= stringArray.length; i++){
+          if( stringArray[i] === 'а' ||
+              stringArray[i] === 'у' ||
+              stringArray[i] === 'и' ||
+              stringArray[i] === 'е' ||
+              stringArray[i] === 'ё' ||
+              stringArray[i] === 'о' ||
+              stringArray[i] === 'ы' ||
+              stringArray[i] === 'э' ||
+              stringArray[i] === 'ю' ||
+              stringArray[i] === 'я' ){
+              result = result + 1;
+          }
+      }
+      return result;
+
+  }
+
+  alert(russiaVowels(userStr));
+
+</script>
+
+</body>
+</html>
