@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    input[type ="submit"]{
+        width: 200px;
+        margin: 5px;
+    }
+</style>
+<body>
+
+
+
+<script>
+
+    let formDef1=
+        [
+            {label:'Название сайта:',kind:'longtext',name:'sitename'},
+            {label:'URL сайта:',kind:'longtext',name:'siteurl'},
+            {label:'Посетителей в сутки:',kind:'number',name:'visitors'},
+            {label:'E-mail для связи:',kind:'shorttext',name:'email'},
+            {label:'Рубрика каталога:',kind:'combo',name:'division',
+                variants:[{text:'здоровье',value:1},{text:'домашний уют',value:2},{text:'бытовая техника',value:3}]},
+            {label:'Размещение:',kind:'radio',name:'payment',
+                variants:[{text:'бесплатное',value:1},{text:'платное',value:2},{text:'VIP',value:3}]},
+            {label:'Разрешить отзывы:',kind:'check',name:'votes'},
+            {label:'Описание сайта:',kind:'memo',name:'description'},
+            {caption:'Опубликовать',kind:'submit'},
+        ];
+
+    let formDef2=
+        [
+            {label:'Фамилия:',kind:'longtext',name:'lastname'},
+            {label:'Имя:',kind:'longtext',name:'firstname'},
+            {label:'Отчество:',kind:'longtext',name:'secondname'},
+            {label:'Возраст:',kind:'number',name:'age'},
+            {caption:'Зарегистрироваться',kind:'submit'},
+        ];
+
+    const body = document.querySelector('body'); //находим боди
+
+    function renderForm (formArr) {
+        const form = document.createElement('form'); // создаем тег форм
+
+        form.method = "post";
+        form.action = "https://fe.it-academy.by/TestForm.php"; // указываем скрипт и метод формы
+
+        body.prepend(form); // Добавляем форму внутрь боди
+
+        formArr.forEach ( elem => {
+            const label = document.createElement('label');
+            label.textContent = elem.label;
+            const input = document.createElement('input');
+
+            if (elem.kind === "longtext" || elem.kind === "shorttext") {
+                form.appendChild(label);
+                input.type = "text";
+                input.name = elem.name;
+                label.appendChild(input);
+            }
+            if (elem.kind === "number") {
+                form.appendChild(label);
+                input.type = elem.kind;
+                input.name = elem.name;
+                label.appendChild(input);
+            }
+            if (elem.kind === "combo") {
+                form.appendChild(label);
+                const select = document.createElement('select');
+                select.name = elem.name;
+                label.appendChild(select);
+                elem.variants.forEach(el => {
+                    let option = document.createElement('option');
+                    option.value =el.value;
+                    option.textContent = el.text;
+                    select.appendChild(option);
+                })
+            }
+            if (elem.kind === "radio") {
+                form.appendChild(label);
+                elem.variants.forEach(elR => {
+                    const radio = document.createElement('input');
+                    const span = document.createElement('span');
+                    radio.type='radio';
+                    span.textContent = elR.text;
+                    radio.value = elR.value;
+                    span.appendChild(radio);
+                    label.appendChild(span);
+                })
+            }
+            if (elem.kind === "check") {
+                form.appendChild(label);
+                const check = document.createElement('input');
+                check.type='checkbox';
+                check.name=elem.name;
+                label.appendChild(check);
+            }
+            if (elem.kind === "memo") {
+                form.appendChild(label);
+                const area = document.createElement('textarea');
+                area.name=elem.name;
+                label.appendChild(area);
+            }
+            if (elem.kind === "submit") {
+                input.value = elem.caption;
+                input.type=elem.kind;
+                form.appendChild(input);
+            }
+        });
+    }
+
+
+    renderForm (formDef2);
+    renderForm (formDef1);
+
+</script>
+</body>
+</html>
